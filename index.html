@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=DM+Mono:300,300i,400,400i,500,500i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="add_block">
+            <h2>test base</h2>
+            <form action="">
+                <div class="inputs_block">
+                    <input class="input_name" type="text" placeholder="First name" required>
+                    <input class="input_second_name" type="text" placeholder="Last name" required>
+                    <input class="input_age" type="number" placeholder="Age" required>
+                </div>
+                <button type="submit" class="add_user_btn">AddUser</button>
+            </form>
+        </div>
+        
+        <table>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Age</td>
+            <td class="btns_td"></td>
+        </tr>
+        </table>
+        
+        <div class="edit_block">
+            <form action="" class="modal_form_hidden">
+                <p>Edit User</p>
+                <input type="text" class="edit_name" placeholder="First Name" required>
+                <input type="text" class="edit_second_name" placeholder="Last Name" required>
+                <input type="number" class="edit_age" placeholder="Age" required>
+                <button type="submit" class="edit_confirm_btn">OK</button>
+                <button class="cancel_btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+    
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>
