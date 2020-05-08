@@ -1,4 +1,4 @@
-const data = [
+const users = [
     {
         firstName: 'Ashton',
         lastName: 'Kutcher',
@@ -18,18 +18,21 @@ const tbody = document.querySelector('table tbody');
 const formAddUser = document.querySelector('form');
 const formEditUser = document.querySelector('.modal_form_hidden');
 const cancelBtn = document.querySelector('.cancel_btn');
-
+let editRowId = null;
 
 function addUser(inputNameValue, inputSecondNameValue, inputAgeValue) {
-    let tr=document.createElement('tr');
+    let tr = document.createElement('tr');
+    tr.id =`row-${Math.round(Math.random()*10000)}`;
     tr.innerHTML = `            
-    <td>${inputNameValue}</td>
-    <td>${inputSecondNameValue}</td>
-    <td>${inputAgeValue}</td>
+    <td class='first-name'>${inputNameValue}</td>
+    <td class='last-name'>${inputSecondNameValue}</td>
+    <td class='age'>${inputAgeValue}</td>
     `;
     addTdWithBtns(tr);
     tbody.append(tr);
 }
+users.forEach(user => addUser(user.firstName, user.lastName, user.age));
+
 function deleteUser() {
     let deleteTr = this.closest('tr');
     deleteTr.remove();
@@ -46,7 +49,6 @@ function addTdWithBtns(tr) {
     deleteUserBtn.addEventListener('click', deleteUser);
     editUserBtn.addEventListener('click', addModalForm);
     
-
     deleteUserBtn.innerHTML = 'delete';
     editUserBtn.innerHTML = 'edit';
 
@@ -55,39 +57,40 @@ function addTdWithBtns(tr) {
     tr.append(btnsTd);
 }
 
-for(let i = 0; i < data.length; i++) {
-    let tr = document.createElement('tr');
-
-    for(let key in data[i]) {
-        let td = document.createElement('td');
-        td.innerHTML = data[i][key];
-        tr.append(td);
-    }
-    addTdWithBtns(tr);
-    tbody.append(tr);
-}
+formEditUser.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let inputEditNameValue = e.target.querySelector('.edit_name').value;
+    let inputEditSecondNameValue = e.target.querySelector('.edit_second_name').value;
+    let inputEditAgeValue = e.target.querySelector('.edit_age').value;
+    let editTr = document.querySelector(`#${editRowId}`);
+    editTr.innerHTML=`
+<td>${inputEditNameValue}</td>
+<td>${inputEditSecondNameValue}</td>
+<td>${inputEditAgeValue}</td>
+`;
+addTdWithBtns(editTr);
+formEditUser.classList.add('modal_form_hidden');
+formEditUser.classList.remove('modal_form');
+formEditUser.reset();
+});
 
 function addModalForm () {
-    formEditUser.reset();
+    
+    let editTr = this.closest('tr');
+    editRowId = editTr.id;
+    let oldFirstName = editTr.querySelector('.first-name').innerText;
+    let oldSLastName = editTr.querySelector('.last-name').innerText;
+    let oldAge = editTr.querySelector('.age').innerText;
+
+    let inputFirstName = document.querySelector('.edit_name');
+    inputFirstName.value = oldFirstName;
+    let inputLastName = document.querySelector('.edit_second_name');
+    inputLastName.value = oldSLastName;
+    let inputAge = document.querySelector('.edit_age');
+    inputAge.value = oldAge;
+    
     formEditUser.classList.add('modal_form');
     formEditUser.classList.remove('modal_form_hidden');
-    let editTr = this.closest('tr');
-    formEditUser.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let inputEditNameValue = e.target.querySelector('.edit_name').value;
-        let inputEditSecondNameValue = e.target.querySelector('.edit_second_name').value;
-        let inputEditAgeValue = e.target.querySelector('.edit_age').value;
-        editTr.innerHTML=`
-    <td>${inputEditNameValue}</td>
-    <td>${inputEditSecondNameValue}</td>
-    <td>${inputEditAgeValue}</td>
-    `;
-    addTdWithBtns(editTr);
-    formEditUser.classList.add('modal_form_hidden');
-    formEditUser.classList.remove('modal_form');
-    });
-    
-    
 };
 function hideModalForm () {
 
