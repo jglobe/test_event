@@ -46,6 +46,7 @@ function addTdWithBtns(tr) {
     deleteUserBtn.addEventListener('click', deleteUser);
     editUserBtn.addEventListener('click', addModalForm);
     
+
     deleteUserBtn.innerHTML = 'delete';
     editUserBtn.innerHTML = 'edit';
 
@@ -66,11 +67,11 @@ for(let i = 0; i < data.length; i++) {
     tbody.append(tr);
 }
 
-function addModalForm (inputEditNameValue, inputEditSecondNameValue, inputEditAgeValue) {
+function addModalForm () {
+    formEditUser.reset();
     formEditUser.classList.add('modal_form');
     formEditUser.classList.remove('modal_form_hidden');
     let editTr = this.closest('tr');
-
     formEditUser.addEventListener('submit', (e) => {
         e.preventDefault();
         let inputEditNameValue = e.target.querySelector('.edit_name').value;
@@ -82,17 +83,17 @@ function addModalForm (inputEditNameValue, inputEditSecondNameValue, inputEditAg
     <td>${inputEditAgeValue}</td>
     `;
     addTdWithBtns(editTr);
-    inputEditNameValue = null;
     formEditUser.classList.add('modal_form_hidden');
     formEditUser.classList.remove('modal_form');
-
     });
+    
     
 };
 function hideModalForm () {
 
     formEditUser.classList.add('modal_form_hidden');
     formEditUser.classList.remove('modal_form');
+    
 }    
 formAddUser.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -100,6 +101,7 @@ formAddUser.addEventListener('submit', (event) => {
     let inputSecondNameValue = event.target.querySelector('.input_second_name').value;
     let inputAgeValue = event.target.querySelector('.input_age').value;
     addUser(inputNameValue, inputSecondNameValue, inputAgeValue);
+    formAddUser.reset();
 });
 
 cancelBtn.addEventListener('click', hideModalForm);
