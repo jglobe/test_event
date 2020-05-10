@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #efeff2;
+    color: #000;
+    font-family: 'Dm Mono', sans-serif;
+}
+.add_block {
+    padding: 20px;
+}
+h2 {
+    text-transform: uppercase;
+    font-family: 'Dm Mono', sans-serif;
+    padding: 20px;
+    color: 	#000000;
+    
+}
+p {
+    font-family: 'Dm Mono', sans-serif;
+    color: #a69eb0;
+}
+table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    margin: 20px 20px 20px 40px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+.btns_td {
+    border: none;
+}
+table tbody tr:first-child td {
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.inputs_block {
+    display: flex;
+    flex-direction: column;
+}
+.input_name, .input_second_name, .input_age {
+    border: none;
+    height: 25px;
+    width: 180px;
+}
+.input_age::-webkit-inner-spin-button, .input_age::-webkit-outer-spin-button,.edit_age::-webkit-inner-spin-button, .edit_age::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+.inputs_block input:not(:last-child) {
+    margin-bottom: 10px;
+}
+.edit_block {
+    margin: 10px auto;
+    align-items: center;
+}
+.edit_block .modal_form {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 20px;
+    position: relative;
+}
+.modal_form_hidden {
+    display: none;
+    
+}
+.modal_form input {
+    margin-bottom: 10px;
+}
+.edit_user_btn, .delete_user_btn, .edit_confirm_btn, .add_user_btn, .cancel_btn  {
+    height: 30px;
+    width: 60px;
+}

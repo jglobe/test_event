@@ -8,27 +8,32 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <header>
+        <h2>test dbase</h2>
+    </header>   
     <div class="container">
         <div class="add_block">
-            <h2>test base</h2>
             <form action="">
                 <div class="inputs_block">
+                    <p>Add a new User</p>
                     <input class="input_name" type="text" placeholder="First name" required>
                     <input class="input_second_name" type="text" placeholder="Last name" required>
                     <input class="input_age" type="number" placeholder="Age" required>
                 </div>
-                <button type="submit" class="add_user_btn">AddUser</button>
+                <button type="submit" class="add_user_btn">Add User</button>
             </form>
         </div>
-        
-        <table>
-        <tr>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td>Age</td>
-            <td class="btns_td"></td>
-        </tr>
-        </table>
+        <div class="test_base">
+            <table>
+                <tr>
+                    <td class="first_td_table">First Name</td>
+                    <td class="first_td_table">Last Name</td>
+                    <td class="first_td_age">Age</td>
+                    <td class="btns_td first_td_table"></td>
+                </tr>
+            </table>
+        </div>
+       
         
         <div class="edit_block">
             <form action="" class="modal_form_hidden">
@@ -37,12 +42,12 @@
                 <input type="text" class="edit_second_name" placeholder="Last Name" required>
                 <input type="number" class="edit_age" placeholder="Age" required>
                 <button type="submit" class="edit_confirm_btn">OK</button>
-                <input type="button" value="Cancel" class="cancel_btn">
+                <button type="button"  class="cancel_btn">Cancel</button>
             </form>
         </div>
     </div>
     
-    
+    <footer></footer>
     <script src="./js/script.js"></script>
 </body>
 </html>

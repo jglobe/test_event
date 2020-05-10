@@ -22,7 +22,7 @@ let editRowId = null;
 
 function addUser(inputNameValue, inputSecondNameValue, inputAgeValue) {
     let tr = document.createElement('tr');
-    tr.id =`row-${Math.round(Math.random()*10000)}`;
+    tr.id =`row-${Math.round(Math.random()*10000000)}`;
     tr.innerHTML = `            
     <td class='first-name'>${inputNameValue}</td>
     <td class='last-name'>${inputSecondNameValue}</td>
@@ -64,9 +64,9 @@ formEditUser.addEventListener('submit', (e) => {
     let inputEditAgeValue = e.target.querySelector('.edit_age').value;
     let editTr = document.querySelector(`#${editRowId}`);
     editTr.innerHTML=`
-<td>${inputEditNameValue}</td>
-<td>${inputEditSecondNameValue}</td>
-<td>${inputEditAgeValue}</td>
+<td class='first-name'>${inputEditNameValue}</td>
+<td class='last-name'>${inputEditSecondNameValue}</td>
+<td class='age'>${inputEditAgeValue}</td>
 `;
 addTdWithBtns(editTr);
 formEditUser.classList.add('modal_form_hidden');
@@ -75,12 +75,11 @@ formEditUser.reset();
 });
 
 function addModalForm () {
-    
     let editTr = this.closest('tr');
     editRowId = editTr.id;
-    let oldFirstName = editTr.querySelector('.first-name').innerText;
-    let oldSLastName = editTr.querySelector('.last-name').innerText;
-    let oldAge = editTr.querySelector('.age').innerText;
+    let oldFirstName = editTr.querySelector('.first-name').textContent;
+    let oldSLastName = editTr.querySelector('.last-name').textContent;
+    let oldAge = editTr.querySelector('.age').textContent;
 
     let inputFirstName = document.querySelector('.edit_name');
     inputFirstName.value = oldFirstName;
